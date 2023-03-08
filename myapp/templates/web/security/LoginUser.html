@@ -1,0 +1,35 @@
+{% extends "web/Base.html" %}
+
+{% block body %}
+    <body class="bg-primary">
+
+
+{% block container %}
+
+    <div class="col-sm-5 offset-3">
+        <h2 class="alert-primary offset-2 text-center mt-5 rounded-3">Sign In</h2>
+        <div class="alert-success offset-2 p-3 rounded-3">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                 {% for fm in form %}
+                <strong class="text-dark">{{fm.label_tag}}</strong> {{fm}} <b class="text-danger offset-6">{{fm.errors | striptags}}</b> <br>
+                {% endfor %}
+                <input type="submit" value='Login' class="btn btn-outline-success mt-1 offset-5"><br>
+            </form>
+        </div>
+        <a href={% url 'signup' %} class="btn bg-warning mt-1 offset-2">Sign Up</a>
+
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger mt-2 offset-2" role="alert">
+                    <strong>Login Failed!!!</strong> Wrong Username and Password
+            </div>
+        {% endif %}
+
+    </div>
+    
+
+{% endblock container %}
+
+
+</body>
+{% endblock body %}

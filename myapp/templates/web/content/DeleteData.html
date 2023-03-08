@@ -1,0 +1,33 @@
+{% extends "web/Base.html" %}
+
+{% block body %}
+    
+    <body class="bg-danger">
+        
+{% block container %}
+    
+    <div class="col-sm-10 offset-1 text-center mt-1">
+        <h2 class="alert-dark">Delete Student</h2>
+    </div>
+
+    <div class="col-sm-6 offset-3 bg-warning pt-2 rounded mt-5">
+
+
+            <form method="post">
+                {% csrf_token %}
+                <h3 class="text-center font-monospace fw-bolder text-decoration-underline">Are you sure to delete {{object}} ?</h3>
+                <input type="submit" value="Yes Delete" class="btn btn-success offset-5">
+            </form><br>
+        
+    </div>
+    
+      <a href={% url 'AllData' %} class="btn btn-info offset-3 mt-2 ">cancel</a><br>
+{% endblock container %}
+
+    </body>
+
+{% endblock body %}
+
+
+
+

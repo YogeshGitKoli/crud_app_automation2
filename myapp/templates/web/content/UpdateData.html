@@ -1,0 +1,42 @@
+{% extends "web/Base.html" %}
+
+{% block body %}
+    
+    <body class="bg-danger">
+        
+{% block container %}
+    
+    <div class="col-sm-10 offset-1 text-center mt-1">
+        <h2 class="alert-dark">Update Student Data</h2>
+    </div>
+
+    <div class="col-sm-4 offset-4 bg-warning p-2 rounded">
+        <form method="post">
+            {% csrf_token %}
+            {% for fm in form %}
+                <strong class="text-dark">{{fm.label_tag}}</strong> {{fm}} <b class="text-danger offset-8">{{fm.errors | striptags}}</b> <br>
+            {% endfor %}
+            <input type="submit" value='Update' class="btn btn-success offset-5">
+        </form>
+    </div>
+    <a href={% url 'AllData' %} class="btn bg-info offset-4 mt-2">Go Back</a>
+
+    <div class="col-sm-4 offset-4 mt-2">
+        {% if messages %}
+            {% for message in messages %}
+        <div class="alert alert-success text-center" role="alert">
+        <strong>{{message}}</strong>
+        </div>
+            {% endfor %}
+    {% endif %}
+    </div>
+
+{% endblock container %}
+
+    </body>
+
+{% endblock body %}
+
+
+
+

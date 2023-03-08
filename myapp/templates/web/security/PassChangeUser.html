@@ -1,0 +1,30 @@
+{% extends "web/Base.html" %}
+
+{% block body %}
+    <body class="bg-info">
+
+
+{% block container %}
+
+    <div class="col-sm-4 offset-3">
+        <h2 class="alert-primary offset-2 text-center mt-5 rounded-3">Change Your Password</h2>
+        <div class="alert-dark offset-2 p-3 rounded-3">
+            <form method="post" novalidate>
+                {% csrf_token %}
+                 {% for fm in form %}
+                <strong class="text-dark">{{fm.label_tag}}</strong> {{fm}} <b class="text-danger offset-6">{{fm.errors | striptags}}</b> <br>
+                {% endfor %}
+                <input type="submit" value='Change' class="btn btn-outline-success mt-1 offset-4"><br>
+            </form>
+        </div>
+        <a href={% url 'AllData' %} class="btn bg-warning mt-1 offset-2">AllData</a>
+
+        
+    </div>
+    
+
+{% endblock container %}
+
+
+</body>
+{% endblock body %} 

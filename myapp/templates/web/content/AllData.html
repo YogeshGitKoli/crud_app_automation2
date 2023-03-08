@@ -1,0 +1,110 @@
+{% extends "web/Base.html" %}
+
+
+{% block body %}
+
+<body class="bg-success">
+
+    
+{% block container %}
+    <div class="col-sm-12 text-center mt-1">
+        {% if messages %}
+            {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+        <strong>{{message}}</strong>
+        </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <h2 class="text-center alert-warning mt-1">CRUD APPLICATION</h2>
+        <div class="col-sm-11">
+            <h3 class="text-center alert-primary offset-1">ALL STUDENTS LIST</h3>
+        </div>   
+
+        <div class="col-sm-8 offset-2 bg-primary fw-bold ">
+
+            {% if form %}
+                <table class="table table-bordered text-light">
+                      <thead class="text-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>City</th>
+                            {% if perms.myapp.change_student and perms.myapp.delete_student %}
+                            <th>Edit</th>
+                            {% endif %}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for fm in form %}
+                        <tr>
+                            <td>{{fm.Name}}</td>
+                            <td>{{fm.Course}}</td>
+                            <td>{{fm.City}}</td>
+                            
+                                {% if perms.myapp.change_student and perms.myapp.delete_student %}
+                                  <td> <a href={% url 'UpdateData' fm.id %} class="btn btn-warning btn-sm">update</a>
+                                        <a href={% url 'DeleteData' fm.id %} class="btn btn-danger btn-sm">delete</a>
+                              </td> 
+                                {% endif %}
+            
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                </table>
+            {% endif %}
+        </div>
+
+        <div class="col-sm-8 offset-2 ">
+            
+            <div class="row align-items-start">
+                    <div class="col">
+
+                     {% if perms.myapp.add_student %}
+                         <a href={% url 'AddData' %} class="btn btn-light offset-2 ms-1 btn-sm">Add New Student</a> <br>
+                     {% endif %}
+                     <a href={% url 'logout' %} class="btn btn-dark offset-2 mt-2 ms-1 btn-sm">Sign Out</a>
+                    </div>
+                    
+                    <div class="col">
+                      {% if is_paginated %}
+            
+                        <ul class="pagination offset-9">
+
+                          {% if page_obj.has_previous %}
+                          <li class="page-item ">
+                            <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1" aria-disabled="true">Previous</a>
+                          </li>
+                          {% endif %}
+
+                          <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">{{page_obj.number}}</a>
+                          </li>
+                          
+                          {% if page_obj.has_next %}
+                          <li class="page-item">
+                            <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+                          </li>
+                          {% endif %}
+
+                         </ul>
+                             
+                         {% endif %}
+                    </div>
+            </div>
+        </div>
+     
+             
+
+
+{% endblock container %}
+
+
+
+</body>
+
+{% endblock  %}
+
+
+

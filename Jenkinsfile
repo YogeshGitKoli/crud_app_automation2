@@ -10,8 +10,10 @@ pipeline {
     stages {
         stage('Checkout main branch') {
             steps {
-                git branch: 'main', url: 'https://github.com/yogeshGit11/crud_app.git'
-            }
+            git branch: 'main', 
+                url: 'git@github.com:YogeshGitKoli/crud-app_jenkins-automation.git',
+                credentialsId: '43b7b09d-fcea-4d94-846c-222d6eaf20f5'
+         }
         }
 
 

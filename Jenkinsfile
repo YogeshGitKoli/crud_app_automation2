@@ -19,7 +19,7 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                sshagent(['43b7b09d-fcea-4d94-846c-222d6eaf20f5']) {
+                sshagent(['b92ba81e-0f10-4d52-adbd-c67b09d58233']) {
                     sh """
                     ssh -o StrictHostKeyChecking=no $EC2_USER@$EC2_IP '
                         cd /home/project/crud_app

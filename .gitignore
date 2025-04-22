@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environments
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+dist/
+build/
+*.manifest
+*.spec
+pip-wheel-metadata/
+
+# Django-specific
+*.log
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
+
+# Ignore collected static files
+staticfiles/
+static/
+# Ignore user uploaded media (optional)
+media/
+
+# Ignore Django migration files except __init__.py
+**/migrations/*.py
+!**/migrations/__init__.py
+**/migrations/*.pyc
+**/migrations/__pycache__/
+
+# IDEs & editors
+.vscode/
+.idea/
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
+

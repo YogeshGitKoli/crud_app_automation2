@@ -9,6 +9,8 @@ from django.views.generic import CreateView,TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 
+def home(request):
+    return render(request,'web/home.html')
 
 class AllData(LoginRequiredMixin,ListView): 
     model=Student

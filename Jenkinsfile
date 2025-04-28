@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         EC2_USER = 'ec2-user'
-        EC2_IP = '13.233.246.203'  // EC2 public IP
+        EC2_IP = '3.110.119.240'  // EC2 public IP
         //PROJECT_DIR = '/home/ec2-user/django-project'
     }
 

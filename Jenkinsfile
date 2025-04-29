@@ -53,7 +53,7 @@ pipeline {
             docker build -t $IMAGE_NAME .
 
             echo "Tagging image for Docker Hub..."
-            docker tag $IMAGE_NAME ypckoli/$IMAGE_NAME:latest
+            docker tag $IMAGE_NAME:latest
 
             echo "Logging into Docker Hub..."
             echo "\${DOCKER_HUB_PASSWORD}" | docker login -u "\${DOCKER_HUB_USERNAME}" --password-stdin

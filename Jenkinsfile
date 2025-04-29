@@ -59,14 +59,14 @@ pipeline {
             echo "\${DOCKER_HUB_PASSWORD}" | docker login -u "\${DOCKER_HUB_USERNAME}" --password-stdin
 
             echo "Pushing image to Docker Hub..."
-            docker push yogeshgitkoli/$IMAGE_NAME:latest
+            docker push $IMAGE_NAME:latest
 
             echo "Stopping and removing old container..."
             docker stop $APP_NAME || true
             docker rm $APP_NAME || true
 
             echo "Running container..."
-            docker run -d --name $APP_NAME -p 8000:8000 yogeshgitkoli/$IMAGE_NAME:latest
+            docker run -d --name $APP_NAME -p 8000:8000 $IMAGE_NAME:latest
         '
         """
     }

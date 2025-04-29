@@ -42,7 +42,7 @@ pipeline {
                     """
                 }*/
 	sshagent(['deccb537-61de-4b9b-9d88-9743f65e8e06']) {
-	    withCredentials([usernamePassword(credentialsId: $DOCKER_CREDENTIALS, usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+	    withCredentials([usernamePassword(credentialsId: '$DOCKER_CREDENTIALS', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
         sh """
         ssh -o StrictHostKeyChecking=no $EC2_USER@$EC2_IP '
             echo "Pulling latest code..."

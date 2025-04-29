@@ -25,11 +25,13 @@ pipeline {
                     sh """
                     ssh -o StrictHostKeyChecking=no $EC2_USER@$EC2_IP '
                         cd /home/project/crud_app
+			echo "pulling the repo..."
                         git pull origin main
                         source env/bin/activate
                         pip install -r requirements.txt
                         python manage.py migrate
                         python manage.py collectstatic --noinput
+			echo "restarting services..."
                         sudo systemctl restart gunicorn
 			sudo systemctl restart nginx
                     '

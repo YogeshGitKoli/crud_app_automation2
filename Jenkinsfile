@@ -15,7 +15,7 @@ pipeline {
                     sh """
                     ssh -o StrictHostKeyChecking=no $EC2_USER@$EC2_IP '
                         echo "Pulling latest code..."
-                        cd crud-app_jenkins-automation
+                        cd /home/project/2crud_app/crud-app_jenkins-automation/
                         git pull origin main
 
                         echo "Building Docker image..."
